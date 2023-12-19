@@ -1,2 +1,2 @@
 # baltbot
-memekeeper bot, gives you a small portion of 3 memes every time you ask
+memekeeper bot, gives you a small portion of 7 memes every time you ask
