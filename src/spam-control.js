@@ -1,4 +1,4 @@
-const PASS_DELAY = 2000
+import { ANTI_SPAM_DELAY } from './constants.js'
 
 export const spamControl = (ctx, next) => {
   const now = Date.now()
@@ -6,7 +6,7 @@ export const spamControl = (ctx, next) => {
 
   ctx.session.lastMessageTime = now
 
-  if (timeFromLastMessage > PASS_DELAY) {
+  if (timeFromLastMessage > ANTI_SPAM_DELAY) {
     next()
   }
 }
