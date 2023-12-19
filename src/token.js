@@ -1,1 +1,1 @@
-export const token = 'PUT_YOUR_TELEGRAM_BOT_API_TOKEN_HERE'
+export const token = '6776532788:AAEAv-R8wiBx-x8urSiWWjLEwDjEa4VUwHk'
