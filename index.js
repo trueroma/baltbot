@@ -1,6 +1,6 @@
 import { Bot, session } from 'grammy'
 
-import { token } from './src/token.js'
+import { token } from './src/constants.js'
 import { initial } from './src/session.js'
 import { launchBot } from './src/launcher.js'
 import { setHandlers } from './src/handlers.js'
