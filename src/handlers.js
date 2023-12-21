@@ -7,7 +7,7 @@ export const setHandlers = bot => {
     ctx.reply(START_TEXT)
   })
 
-  bot.chatType('private').command('sendmemes', ctx => {
+  bot.chatType('private').command('sendmemes', async ctx => {
     const now = Date.now()
 
     if (ctx['session'].lasMemesTime + MEMES_DELAY > now) {
@@ -18,6 +18,16 @@ export const setHandlers = bot => {
 
     ctx['session'].lasMemesTime = now
 
-    ctx.replyWithMediaGroup(getRandomImages())
+    await Promise.all(
+      ctx['session'].lastMemesGroup
+        .map(id => ctx.api.deleteMessage(ctx.chat.id, id))
+    )
+
+    const memes = await ctx.replyWithMediaGroup(getRandomImages())
+
+    ctx['session'].lastMemesGroup = [
+      ctx.message.message_id,
+      ...memes.map(({ message_id }) => message_id),
+    ]
   })
 }
